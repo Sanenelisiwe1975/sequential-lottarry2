@@ -162,7 +162,7 @@ contract TieredSequentialLotteryVRF_Secure_VRFSorted is
         bytes32 gasLane,
         uint64 subscriptionId,
         uint32 callbackGasLimit
-    ) VRFConsumerBaseV2(vrfCoordinator) {
+    ) VRFConsumerBaseV2(vrfCoordinator) Ownable(msg.sender) {
         i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinator);
         i_gasLane = gasLane;
         i_subscriptionId = subscriptionId;
@@ -360,7 +360,7 @@ contract TieredSequentialLotteryVRF_Secure_VRFSorted is
         );
         
         vrfRequestPending[currentRoundId] = false;
-        drawLottery();
+        this.drawLottery();
     }
     
     /**
