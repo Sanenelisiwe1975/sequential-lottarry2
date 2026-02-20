@@ -75,9 +75,8 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     uint256 public constant MIN_TICKET_PRICE = 0.001 ether;
     uint256 public constant MAX_TICKET_PRICE = 1 ether;
 
-    // =============================================================
+
     // STATE VARIABLES
-    // =============================================================
 
     uint256 public currentRoundId;
     uint256 public ticketPrice = 0.01 ether;
