@@ -1,5 +1,5 @@
 // Contract address - UPDATE THIS after deploying your contract
-export const LOTTERY_CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; // Replace with your deployed contract address
+export const LOTTERY_CONTRACT_ADDRESS = "0x275A829BA9D035e0e8b93AB02f588ced5d55C3A0"; // Replace with your deployed contract address
 
 // Chain configuration
 export const SUPPORTED_CHAINS = {
