@@ -160,9 +160,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         emit NewRoundStarted(currentRoundId, round.endTime);
     }
 
-    // =============================================================
     // BUY TICKET
-    // =============================================================
 
     function buyTicket(uint8[7] memory numbers)
         external
