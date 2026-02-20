@@ -1,6 +1,3 @@
-// Test script for Tiered Sequential Lottery Contract
-// Run with: npx hardhat test
-
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 

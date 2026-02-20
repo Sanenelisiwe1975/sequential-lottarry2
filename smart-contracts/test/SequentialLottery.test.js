@@ -1,5 +1,3 @@
-// Test script for Sequential Lottery Contract
-// This can be used with Hardhat or Remix
 
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
