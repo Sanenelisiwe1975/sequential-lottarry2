@@ -104,9 +104,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     event WinningsClaimed(address player, uint256 amount);
     event NewRoundStarted(uint256 roundId, uint256 endTime);
 
-    // =============================================================
     // CONSTRUCTOR
-    // =============================================================
 
     constructor(
         address vrfCoordinator,
