@@ -190,9 +190,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         emit TicketPurchased(msg.sender, currentRoundId);
     }
 
-    // =============================================================
     // DRAW LOTTERY
-    // =============================================================
 
     function drawLottery() external {
 
