@@ -26,10 +26,8 @@ contract TieredSequentialLotteryVRF_5MinRounds is
 
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 7;
-
-    // =============================================================
+    
     // LOTTERY STRUCTURES
-    // =============================================================
 
     struct Ticket {
         address player;
@@ -61,9 +59,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         uint16 percentage;
     }
 
-    // =============================================================
     // CONSTANTS
-    // =============================================================
 
     uint256 public constant MIN_NUMBERS = 1;
     uint256 public constant MAX_NUMBERS = 49;
