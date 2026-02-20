@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Hardhat files
+cache/
+artifacts/
+typechain/
+typechain-types/
+
+# Deployment records (optional - you may want to track these)
+deployments/*.json
+
+# Coverage reports
+coverage/
+coverage.json
+
+# Logs
+*.log

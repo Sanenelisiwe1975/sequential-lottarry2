@@ -1,0 +1,1023 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0xDD798464D8Ee8B34aAf95Bb5e60f1ef2B21cbB60",
+      "txHash": "0xa1d95e7e2bb034dfc25c17429e495fd7652cb1463840b16d2d24db047b00c23e",
+      "kind": "uups"
+    },
+    {
+      "address": "0x8B9cF756b6Df9e12042c27ef21765e467BCE7303",
+      "txHash": "0xbe33bde8c6b8e59b4a896316ab53ebeded1886635016bb8cf52f63e403a648d1",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "9d151a940785c71f4d8c9350c09cd06a60ba1e326b2fd5503385fe7ec0607b5d": {
+      "address": "0x3E4C43F3ddF6f228F9af9E3AaeF502Cfe2fa229E",
+      "txHash": "0xf25af578175f27031f863be1ef1a08d5e393d34eb14905b3b2d226a637003eb5",
+      "layout": {
+        "solcVersion": "0.8.22",
+        "storage": [
+          {
+            "label": "vrfCoordinator",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "VRFConsumerBaseV2Upgradeable",
+            "src": "contracts\\VRFConsumerBaseV2Upgradeable.sol:8"
+          },
+          {
+            "label": "i_vrfCoordinator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(VRFCoordinatorV2Interface)95",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:44"
+          },
+          {
+            "label": "i_gasLane",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bytes32",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:45"
+          },
+          {
+            "label": "i_subscriptionId",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint64",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:46"
+          },
+          {
+            "label": "i_callbackGasLimit",
+            "offset": 8,
+            "slot": "3",
+            "type": "t_uint32",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:47"
+          },
+          {
+            "label": "maxTicketsPerAddress",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:98"
+          },
+          {
+            "label": "maxTicketsPerTransaction",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:99"
+          },
+          {
+            "label": "purchaseCooldown",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:102"
+          },
+          {
+            "label": "currentRoundId",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:105"
+          },
+          {
+            "label": "ticketPrice",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:106"
+          },
+          {
+            "label": "ownerBalance",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:107"
+          },
+          {
+            "label": "carryOverBalance",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:108"
+          },
+          {
+            "label": "prizeTiers",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_array(t_struct(PrizeTier)1901_storage)7_storage",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:111"
+          },
+          {
+            "label": "lotteryRounds",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_uint256,t_struct(LotteryRound)1896_storage)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:114"
+          },
+          {
+            "label": "roundTickets",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_array(t_struct(Ticket)1864_storage)dyn_storage)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:115"
+          },
+          {
+            "label": "playerWinnings",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:116"
+          },
+          {
+            "label": "vrfRequestToRound",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:117"
+          },
+          {
+            "label": "vrfRequestPending",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_mapping(t_uint256,t_bool)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:120"
+          },
+          {
+            "label": "vrfRequestTime",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:121"
+          },
+          {
+            "label": "ticketCountPerAddress",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:122"
+          },
+          {
+            "label": "lastPurchaseTime",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:123"
+          },
+          {
+            "label": "version",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:126"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_struct(InitializableStorage)160_storage": {
+            "label": "struct Initializable.InitializableStorage",
+            "members": [
+              {
+                "label": "_initialized",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "_initializing",
+                "type": "t_bool",
+                "offset": 8,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(OwnableStorage)100_storage": {
+            "label": "struct OwnableUpgradeable.OwnableStorage",
+            "members": [
+              {
+                "label": "_owner",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PausableStorage)311_storage": {
+            "label": "struct PausableUpgradeable.PausableStorage",
+            "members": [
+              {
+                "label": "_paused",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReentrancyGuardStorage)375_storage": {
+            "label": "struct ReentrancyGuardUpgradeable.ReentrancyGuardStorage",
+            "members": [
+              {
+                "label": "_status",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_struct(PrizeTier)1901_storage)7_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.PrizeTier[7]",
+            "numberOfBytes": "224"
+          },
+          "t_array(t_struct(Ticket)1864_storage)dyn_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.Ticket[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint8)7_storage": {
+            "label": "uint8[7]",
+            "numberOfBytes": "32"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(VRFCoordinatorV2Interface)95": {
+            "label": "contract VRFCoordinatorV2Interface",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_array(t_struct(Ticket)1864_storage)dyn_storage)": {
+            "label": "mapping(uint256 => struct TieredSequentialLotteryVRF_Upgradeable.Ticket[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(uint256 => mapping(address => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(LotteryRound)1896_storage)": {
+            "label": "mapping(uint256 => struct TieredSequentialLotteryVRF_Upgradeable.LotteryRound)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_struct(WinnerTier)1872_storage)": {
+            "label": "mapping(uint8 => struct TieredSequentialLotteryVRF_Upgradeable.WinnerTier)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(LotteryRound)1896_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.LotteryRound",
+            "members": [
+              {
+                "label": "roundId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "winningNumbers",
+                "type": "t_array(t_uint8)7_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "prizePool",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "ticketPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "startTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "endTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "isDrawn",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "vrfRequestId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "winnerTiers",
+                "type": "t_mapping(t_uint8,t_struct(WinnerTier)1872_storage)",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_struct(PrizeTier)1901_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.PrizeTier",
+            "members": [
+              {
+                "label": "matchCount",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "percentage",
+                "type": "t_uint16",
+                "offset": 1,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(Ticket)1864_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.Ticket",
+            "members": [
+              {
+                "label": "player",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "numbers",
+                "type": "t_array(t_uint8)7_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "purchaseTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "matchedBalls",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(WinnerTier)1872_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.WinnerTier",
+            "members": [
+              {
+                "label": "matchCount",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "winners",
+                "type": "t_array(t_address)dyn_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "prizePerWinner",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:24",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Pausable": [
+            {
+              "contract": "PausableUpgradeable",
+              "label": "_paused",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\PausableUpgradeable.sol:21",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.ReentrancyGuard": [
+            {
+              "contract": "ReentrancyGuardUpgradeable",
+              "label": "_status",
+              "type": "t_uint256",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\ReentrancyGuardUpgradeable.sol:43",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:69",
+              "offset": 0,
+              "slot": "0"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:73",
+              "offset": 8,
+              "slot": "0"
+            }
+          ]
+        }
+      }
+    },
+    "a4aa515054927afdd4c0c07688fc0f995bd887fe9ea06acb03963815bf517417": {
+      "address": "0xB5F138B343557bf6844F63AAD1633bbd50E0Fd1C",
+      "txHash": "0x77edc31030b4060d42f2425eb7c8c301e017d5c36c53203eb317603e58c07987",
+      "layout": {
+        "solcVersion": "0.8.22",
+        "storage": [
+          {
+            "label": "vrfCoordinator",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "VRFConsumerBaseV2Upgradeable",
+            "src": "contracts\\VRFConsumerBaseV2Upgradeable.sol:8"
+          },
+          {
+            "label": "i_vrfCoordinator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(VRFCoordinatorV2Interface)95",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:44"
+          },
+          {
+            "label": "i_gasLane",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bytes32",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:45"
+          },
+          {
+            "label": "i_subscriptionId",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:46"
+          },
+          {
+            "label": "i_callbackGasLimit",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint32",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:47"
+          },
+          {
+            "label": "maxTicketsPerAddress",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:98"
+          },
+          {
+            "label": "maxTicketsPerTransaction",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:99"
+          },
+          {
+            "label": "purchaseCooldown",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:102"
+          },
+          {
+            "label": "currentRoundId",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:105"
+          },
+          {
+            "label": "ticketPrice",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:106"
+          },
+          {
+            "label": "ownerBalance",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:107"
+          },
+          {
+            "label": "carryOverBalance",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:108"
+          },
+          {
+            "label": "prizeTiers",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_struct(PrizeTier)1901_storage)7_storage",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:111"
+          },
+          {
+            "label": "lotteryRounds",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(LotteryRound)1896_storage)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:114"
+          },
+          {
+            "label": "roundTickets",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_uint256,t_array(t_struct(Ticket)1864_storage)dyn_storage)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:115"
+          },
+          {
+            "label": "playerWinnings",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:116"
+          },
+          {
+            "label": "vrfRequestToRound",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:117"
+          },
+          {
+            "label": "vrfRequestPending",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_bool)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:120"
+          },
+          {
+            "label": "vrfRequestTime",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:121"
+          },
+          {
+            "label": "ticketCountPerAddress",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:122"
+          },
+          {
+            "label": "lastPurchaseTime",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:123"
+          },
+          {
+            "label": "version",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_uint256",
+            "contract": "TieredSequentialLotteryVRF_Upgradeable",
+            "src": "contracts\\TieredSequentialLotteryVRF_Upgradeable.sol:126"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_struct(InitializableStorage)160_storage": {
+            "label": "struct Initializable.InitializableStorage",
+            "members": [
+              {
+                "label": "_initialized",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "_initializing",
+                "type": "t_bool",
+                "offset": 8,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(OwnableStorage)100_storage": {
+            "label": "struct OwnableUpgradeable.OwnableStorage",
+            "members": [
+              {
+                "label": "_owner",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PausableStorage)311_storage": {
+            "label": "struct PausableUpgradeable.PausableStorage",
+            "members": [
+              {
+                "label": "_paused",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReentrancyGuardStorage)375_storage": {
+            "label": "struct ReentrancyGuardUpgradeable.ReentrancyGuardStorage",
+            "members": [
+              {
+                "label": "_status",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_struct(PrizeTier)1901_storage)7_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.PrizeTier[7]",
+            "numberOfBytes": "224"
+          },
+          "t_array(t_struct(Ticket)1864_storage)dyn_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.Ticket[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint8)7_storage": {
+            "label": "uint8[7]",
+            "numberOfBytes": "32"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(VRFCoordinatorV2Interface)95": {
+            "label": "contract VRFCoordinatorV2Interface",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_array(t_struct(Ticket)1864_storage)dyn_storage)": {
+            "label": "mapping(uint256 => struct TieredSequentialLotteryVRF_Upgradeable.Ticket[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(uint256 => mapping(address => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(LotteryRound)1896_storage)": {
+            "label": "mapping(uint256 => struct TieredSequentialLotteryVRF_Upgradeable.LotteryRound)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_struct(WinnerTier)1872_storage)": {
+            "label": "mapping(uint8 => struct TieredSequentialLotteryVRF_Upgradeable.WinnerTier)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(LotteryRound)1896_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.LotteryRound",
+            "members": [
+              {
+                "label": "roundId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "winningNumbers",
+                "type": "t_array(t_uint8)7_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "prizePool",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "ticketPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "startTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "endTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "isDrawn",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "vrfRequestId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "winnerTiers",
+                "type": "t_mapping(t_uint8,t_struct(WinnerTier)1872_storage)",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_struct(PrizeTier)1901_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.PrizeTier",
+            "members": [
+              {
+                "label": "matchCount",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "percentage",
+                "type": "t_uint16",
+                "offset": 1,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(Ticket)1864_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.Ticket",
+            "members": [
+              {
+                "label": "player",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "numbers",
+                "type": "t_array(t_uint8)7_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "purchaseTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "matchedBalls",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(WinnerTier)1872_storage": {
+            "label": "struct TieredSequentialLotteryVRF_Upgradeable.WinnerTier",
+            "members": [
+              {
+                "label": "matchCount",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "winners",
+                "type": "t_array(t_address)dyn_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "prizePerWinner",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:24",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Pausable": [
+            {
+              "contract": "PausableUpgradeable",
+              "label": "_paused",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\PausableUpgradeable.sol:21",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.ReentrancyGuard": [
+            {
+              "contract": "ReentrancyGuardUpgradeable",
+              "label": "_status",
+              "type": "t_uint256",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\ReentrancyGuardUpgradeable.sol:43",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:69",
+              "offset": 0,
+              "slot": "0"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:73",
+              "offset": 8,
+              "slot": "0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
