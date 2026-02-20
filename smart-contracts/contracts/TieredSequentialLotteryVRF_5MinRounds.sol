@@ -94,9 +94,8 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     mapping(uint256 => uint256) public vrfRequestToRound;
     mapping(uint256 => bool) public vrfRequestPending;
 
-    // =============================================================
+
     // EVENTS
-    // =============================================================
 
     event TicketPurchased(address player, uint256 roundId);
     event LotteryDrawRequested(uint256 roundId, uint256 requestId);
