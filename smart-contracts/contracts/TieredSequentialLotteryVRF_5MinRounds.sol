@@ -229,9 +229,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         emit LotteryDrawRequested(currentRoundId, requestId);
     }
 
-    // =============================================================
     // VRF CALLBACK
-    // =============================================================
 
     function fulfillRandomWords(
         uint256 requestId,
