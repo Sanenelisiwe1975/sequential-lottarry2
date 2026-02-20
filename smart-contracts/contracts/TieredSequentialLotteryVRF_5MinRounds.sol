@@ -133,9 +133,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         startNewRound();
     }
 
-    // =============================================================
     // START ROUND
-    // =============================================================
 
     function startNewRound() public {
 
