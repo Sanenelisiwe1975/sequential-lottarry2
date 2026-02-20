@@ -15,9 +15,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     Pausable,
     Ownable
 {
-    // =============================================================
     // VRF v2.5 VARIABLES
-    // =============================================================
 
     address private immutable i_vrfCoordinator;
     bytes32 private immutable i_gasLane;
@@ -26,7 +24,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
 
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 7;
-    
+
     // LOTTERY STRUCTURES
 
     struct Ticket {
