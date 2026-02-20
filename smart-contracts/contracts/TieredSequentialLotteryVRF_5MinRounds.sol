@@ -11,18 +11,14 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     ReentrancyGuard,
     Pausable
 {
-    // VRF v2.5 VARIABLES
-
-    address private immutable i_vrfCoordinator;
+    // VRF VARIABLES
     bytes32 private immutable i_gasLane;
     uint256 private immutable i_subscriptionId;
     uint32 private immutable i_callbackGasLimit;
-
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 7;
 
     // LOTTERY STRUCTURES
-
     struct Ticket {
         address player;
         uint8[7] numbers;
@@ -54,24 +50,17 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     }
 
     // CONSTANTS
-
     uint256 public constant MIN_NUMBERS = 1;
     uint256 public constant MAX_NUMBERS = 49;
     uint256 public constant NUMBERS_COUNT = 7;
-
     uint256 public constant OWNER_FEE_PERCENTAGE = 1000;
     uint256 public constant ROUND_DURATION = 5 minutes;
-
     uint256 public constant MIN_TICKET_PRICE = 0.001 ether;
     uint256 public constant MAX_TICKET_PRICE = 1 ether;
 
     // STATE VARIABLES
-
-    address public owner;
-    
     uint256 public currentRoundId;
     uint256 public ticketPrice = 0.01 ether;
-
     uint256 public ownerBalance;
     uint256 public carryOverBalance;
 
@@ -80,19 +69,10 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     mapping(uint256 => LotteryRound) public lotteryRounds;
     mapping(uint256 => Ticket[]) public roundTickets;
     mapping(address => uint256) public playerWinnings;
-
     mapping(uint256 => uint256) public vrfRequestToRound;
     mapping(uint256 => bool) public vrfRequestPending;
 
-    // MODIFIERS
-    
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Not owner");
-        _;
-    }
-
     // EVENTS
-
     event TicketPurchased(address indexed player, uint256 indexed roundId, uint8[7] numbers);
     event LotteryDrawRequested(uint256 indexed roundId, uint256 requestId);
     event LotteryDrawn(uint256 indexed roundId, uint8[7] winningNumbers);
@@ -102,7 +82,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     event OwnerWithdrawal(address indexed owner, uint256 amount);
 
     // CONSTRUCTOR
-
     constructor(
         address vrfCoordinator,
         bytes32 gasLane,
@@ -111,9 +90,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     )
         VRFConsumerBaseV2Plus(vrfCoordinator)
     {
-        owner = msg.sender;
-        
-        i_vrfCoordinator = vrfCoordinator;
         i_gasLane = gasLane;
         i_subscriptionId = subscriptionId;
         i_callbackGasLimit = callbackGasLimit;
@@ -129,8 +105,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         startNewRound();
     }
 
-    // START ROUND
-
+    // START NEW ROUND
     function startNewRound() public {
         require(
             currentRoundId == 0 || lotteryRounds[currentRoundId].isDrawn,
@@ -138,7 +113,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         );
 
         currentRoundId++;
-
         LotteryRound storage round = lotteryRounds[currentRoundId];
 
         round.roundId = currentRoundId;
@@ -148,12 +122,10 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         round.prizePool = carryOverBalance;
 
         carryOverBalance = 0;
-
         emit NewRoundStarted(currentRoundId, round.endTime);
     }
 
     // BUY TICKET
-
     function buyTicket(uint8[7] memory numbers)
         external
         payable
@@ -164,7 +136,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         require(validateNumbers(numbers), "Invalid numbers");
 
         LotteryRound storage round = lotteryRounds[currentRoundId];
-
         require(block.timestamp < round.endTime, "Round ended");
         require(!round.isDrawn, "Round already drawn");
 
@@ -174,9 +145,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         ownerBalance += ownerFee;
         round.prizePool += prizePart;
 
-        // Sort numbers in ascending order
         uint8[7] memory sortedNumbers = sortNumbers(numbers);
-
         roundTickets[currentRoundId].push(
             Ticket(msg.sender, sortedNumbers, block.timestamp, 0)
         );
@@ -185,7 +154,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     }
 
     // VALIDATE NUMBERS
-    
     function validateNumbers(uint8[7] memory numbers) internal pure returns (bool) {
         for (uint256 i = 0; i < NUMBERS_COUNT; i++) {
             if (numbers[i] < MIN_NUMBERS || numbers[i] > MAX_NUMBERS) {
@@ -195,28 +163,22 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         return true;
     }
 
-    // SORT NUMBERS IN ASCENDING ORDER
-    
+    // SORT NUMBERS
     function sortNumbers(uint8[7] memory arr) internal pure returns (uint8[7] memory) {
         uint8[7] memory sorted = arr;
-        
-        // Insertion sort
         for (uint256 i = 1; i < NUMBERS_COUNT; i++) {
             uint8 key = sorted[i];
             uint256 j = i;
-            
             while (j > 0 && sorted[j - 1] > key) {
                 sorted[j] = sorted[j - 1];
                 j--;
             }
             sorted[j] = key;
         }
-        
         return sorted;
     }
 
     // DRAW LOTTERY
-
     function drawLottery() external whenNotPaused {
         LotteryRound storage round = lotteryRounds[currentRoundId];
 
@@ -224,7 +186,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         require(!round.isDrawn, "Already drawn");
         require(!vrfRequestPending[currentRoundId], "Draw already requested");
 
-        // If no tickets, skip VRF and mark as drawn
         if (roundTickets[currentRoundId].length == 0) {
             round.isDrawn = true;
             emit LotteryDrawn(currentRoundId, [0,0,0,0,0,0,0]);
@@ -252,43 +213,33 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     }
 
     // VRF CALLBACK
-
     function fulfillRandomWords(
         uint256 requestId,
         uint256[] calldata randomWords
     ) internal override {
         uint256 roundId = vrfRequestToRound[requestId];
-
         LotteryRound storage round = lotteryRounds[roundId];
 
-        // Generate random numbers
         uint8[7] memory tempNumbers;
         for (uint256 i = 0; i < NUMBERS_COUNT; i++) {
             tempNumbers[i] = uint8((randomWords[i] % MAX_NUMBERS) + 1);
         }
 
-        // Sort VRF numbers in ascending order
         uint8[7] memory winningNumbers = sortNumbers(tempNumbers);
-
         round.winningNumbers = winningNumbers;
         round.isDrawn = true;
         vrfRequestPending[roundId] = false;
 
         emit LotteryDrawn(roundId, winningNumbers);
-
-        // Process winners
         distributePrizes(roundId);
     }
 
     // DISTRIBUTE PRIZES
-    
     function distributePrizes(uint256 roundId) internal {
         LotteryRound storage round = lotteryRounds[roundId];
         Ticket[] storage tickets = roundTickets[roundId];
         
         uint256[8] memory tierCounts;
-        
-        // Count matches for each ticket
         for (uint256 i = 0; i < tickets.length; i++) {
             uint8 matches = countSequentialMatches(tickets[i].numbers, round.winningNumbers);
             tickets[i].matchedBalls = matches;
@@ -298,7 +249,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         uint256 totalPrizePool = round.prizePool;
         uint256 totalDistributed = 0;
         
-        // Distribute prizes by tier
         for (uint8 matchCount = 2; matchCount <= 7; matchCount++) {
             if (tierCounts[matchCount] == 0) continue;
             
@@ -312,18 +262,15 @@ contract TieredSequentialLotteryVRF_5MinRounds is
             tier.matchCount = matchCount;
             tier.prizePerWinner = prizePerWinner;
             
-            // Award prizes
             for (uint256 i = 0; i < tickets.length; i++) {
                 if (tickets[i].matchedBalls == matchCount) {
                     playerWinnings[tickets[i].player] += prizePerWinner;
                     tier.winners.push(tickets[i].player);
-                    
                     emit WinnerDetermined(roundId, tickets[i].player, matchCount, prizePerWinner);
                 }
             }
         }
         
-        // Carry over unclaimed prizes
         uint256 unclaimedPrizes = totalPrizePool - totalDistributed;
         if (unclaimedPrizes > 0) {
             carryOverBalance += unclaimedPrizes;
@@ -331,7 +278,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     }
 
     // COUNT SEQUENTIAL MATCHES
-    
     function countSequentialMatches(
         uint8[7] memory playerNumbers,
         uint8[7] memory winningNumbers
@@ -341,14 +287,13 @@ contract TieredSequentialLotteryVRF_5MinRounds is
             if (playerNumbers[i] == winningNumbers[i]) {
                 matches++;
             } else {
-                break; // Stop at first mismatch
+                break;
             }
         }
         return matches;
     }
 
     // CLAIM WINNINGS
-
     function claimWinnings() external nonReentrant {
         uint256 amount = playerWinnings[msg.sender];
         require(amount > 0, "No winnings");
@@ -361,30 +306,27 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         emit WinningsClaimed(msg.sender, amount);
     }
 
-    // OWNER WITHDRAW FEES
-    
+    // OWNER WITHDRAW FEES (uses built-in onlyOwner from VRFConsumerBaseV2Plus)
     function withdrawOwnerFees() external onlyOwner nonReentrant {
         uint256 amount = ownerBalance;
         require(amount > 0, "No fees to withdraw");
         
         ownerBalance = 0;
         
-        (bool success, ) = payable(owner).call{value: amount}("");
+        (bool success, ) = payable(owner()).call{value: amount}("");
         require(success, "Transfer failed");
         
-        emit OwnerWithdrawal(owner, amount);
+        emit OwnerWithdrawal(owner(), amount);
     }
 
-    // SET TICKET PRICE
-    
+    // SET TICKET PRICE (uses built-in onlyOwner)
     function setTicketPrice(uint256 newPrice) external onlyOwner {
         require(newPrice >= MIN_TICKET_PRICE, "Price too low");
         require(newPrice <= MAX_TICKET_PRICE, "Price too high");
         ticketPrice = newPrice;
     }
 
-    // PAUSE/UNPAUSE
-    
+    // PAUSE/UNPAUSE (uses built-in onlyOwner)
     function pause() external onlyOwner {
         _pause();
     }
@@ -394,7 +336,6 @@ contract TieredSequentialLotteryVRF_5MinRounds is
     }
 
     // VIEW FUNCTIONS
-
     function getTimeRemaining() external view returns (uint256) {
         if (currentRoundId == 0) return 0;
         if (block.timestamp >= lotteryRounds[currentRoundId].endTime) return 0;
@@ -415,9 +356,7 @@ contract TieredSequentialLotteryVRF_5MinRounds is
         uint256 count = 0;
         
         for (uint256 i = 0; i < allTickets.length; i++) {
-            if (allTickets[i].player == msg.sender) {
-                count++;
-            }
+            if (allTickets[i].player == msg.sender) count++;
         }
         
         Ticket[] memory myTickets = new Ticket[](count);
