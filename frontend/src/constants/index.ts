@@ -10,3 +10,6 @@ export const SUPPORTED_CHAINS = {
 
 // Update this to match your deployment network
 export const ACTIVE_CHAIN = SUPPORTED_CHAINS.SEPOLIA;
+
+// Export the ABI
+export { LOTTERY_ABI } from './abi';
