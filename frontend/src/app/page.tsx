@@ -10,6 +10,7 @@ import NumberPicker from '../components/NumberPicker';
 import RoundInfo from '../components/RoundInfo';
 import MyTickets from '../components/MyTickets';
 import PrizeTiers from '../components/PrizeTiers';
+import AdminPanel from '../components/AdminPanel';
 import { useLotteryContract, usePlayerWinnings } from '@/hooks/useLotteryContract';
 
 export default function Home() {
@@ -100,6 +101,7 @@ export default function Home() {
 
           <aside className="space-y-6">
             <PrizeTiers prizeTiers={prizeTiers} prizePool={roundInfo?.prizePool} />
+            {isConnected && <AdminPanel />}
           </aside>
         </div>
       </main>
