@@ -4,11 +4,13 @@ dotenv.config();
 import app from './app';
 import connectDatabase from './config/database';
 import BlockchainListener from './services/blockchainListener';
+import AutoRoundManager from './services/autoRoundManager';
 import logger from './config/logger';
 
 const PORT = process.env.PORT || 5000;
 
 let blockchainListener: BlockchainListener | null = null;
+let autoRoundManager: AutoRoundManager | null = null;
 
 async function startServer() {
   try {
@@ -21,6 +23,14 @@ async function startServer() {
       await blockchainListener.start();
     } else {
       logger.warn('⚠️  Blockchain event listener is disabled');
+    }
+
+    // Start auto round manager if enabled
+    if (process.env.ENABLE_AUTO_ROUND_MANAGER === 'true') {
+      autoRoundManager = new AutoRoundManager();
+      await autoRoundManager.start();
+    } else {
+      logger.warn('⚠️  Auto Round Manager is disabled');
     }
 
     // Start Express server
@@ -43,6 +53,9 @@ process.on('SIGTERM', async () => {
   if (blockchainListener) {
     await blockchainListener.stop();
   }
+  if (autoRoundManager) {
+    autoRoundManager.stop();
+  }
   process.exit(0);
 });
 
@@ -50,6 +63,9 @@ process.on('SIGINT', async () => {
   logger.info('SIGINT signal received: closing HTTP server');
   if (blockchainListener) {
     await blockchainListener.stop();
+  }
+  if (autoRoundManager) {
+    autoRoundManager.stop();
   }
   process.exit(0);
 });
