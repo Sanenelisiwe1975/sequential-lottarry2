@@ -11,6 +11,7 @@ import RoundInfo from '../components/RoundInfo';
 import MyTickets from '../components/MyTickets';
 import PrizeTiers from '../components/PrizeTiers';
 import AdminPanel from '../components/AdminPanel';
+import CountdownTimer from '../components/CountdownTimer';
 import { useLotteryContract, usePlayerWinnings } from '@/hooks/useLotteryContract';
 
 export default function Home() {
@@ -72,10 +73,15 @@ export default function Home() {
 
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <RoundInfo 
-              roundInfo={roundInfo} 
-              ticketPrice={ticketPrice as bigint} 
-              carryOverBalance={carryOverBalance as bigint} 
+            {/* Countdown Timer - Prominent Display */}
+            {roundInfo && roundInfo.endTime && (
+              <CountdownTimer endTime={roundInfo.endTime} />
+            )}
+
+            <RoundInfo
+              roundInfo={roundInfo}
+              ticketPrice={ticketPrice as bigint}
+              carryOverBalance={carryOverBalance as bigint}
             />
             
             {isConnected && (
