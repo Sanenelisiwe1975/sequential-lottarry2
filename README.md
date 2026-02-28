@@ -8,6 +8,7 @@ A full-stack decentralized lottery application with provably fair random numbers
 sequential-lottery/
 ├── smart-contracts/     # Solidity contracts & deployment
 ├── frontend/           # Next.js 14 user interface
+├── backend/            # Node.js/Express API server
 └── docs/              # Complete documentation
 ```
 
@@ -20,6 +21,9 @@ sequential-lottery/
 - 🔄 **Carry Over** - Unclaimed prizes roll to next round
 - 📱 **Modern UI** - Responsive Next.js frontend
 - 🔐 **Secure** - Auditable smart contracts
+- 🗄️ **Backend API** - REST API with MongoDB database
+- 📊 **Analytics** - User statistics and leaderboards
+- 🔄 **Auto Sync** - Blockchain event listener
 
 ## 🎯 Prize Distribution
 
@@ -85,9 +89,26 @@ Edit `frontend/src/constants/index.ts`:
 export const LOTTERY_CONTRACT_ADDRESS = "0xYourContractAddress";
 ```
 
-### 6. Run Frontend
+### 6. Setup Backend (Optional but Recommended)
 
 ```bash
+cd ../backend
+npm install
+cp .env.example .env
+# Edit .env with MongoDB URI and RPC URL
+```
+
+### 7. Run Backend (Optional)
+
+```bash
+npm run dev
+# Backend runs on http://localhost:5000
+```
+
+### 8. Run Frontend
+
+```bash
+cd ../frontend
 npm run dev
 # Visit http://localhost:3000
 ```
@@ -136,6 +157,34 @@ npm run lint          # Lint code
 ```
 
 **Documentation:** See `frontend/README.md`
+
+### Backend
+
+Located in `backend/`
+
+**Stack:**
+- Node.js + Express
+- TypeScript
+- MongoDB
+- Ethers.js
+- Winston (logging)
+
+**Commands:**
+```bash
+cd backend
+npm run dev           # Development server
+npm run build         # Production build
+npm run start         # Start production server
+```
+
+**Features:**
+- REST API for lottery data
+- Blockchain event synchronization
+- User statistics and analytics
+- Historical data storage
+- Real-time leaderboards
+
+**Documentation:** See `backend/README.md` and `BACKEND_INTEGRATION.md`
 
 ### Documentation
 

@@ -14,7 +14,7 @@ export default function MyTickets({ roundId, address }: MyTicketsProps) {
     address: LOTTERY_CONTRACT_ADDRESS,
     abi: LOTTERY_ABI,
     functionName: 'getMyTickets',
-    args: [roundId],
+    args: [address, roundId],
     query: {
       enabled: !!address,
     },
@@ -139,25 +139,29 @@ export default function MyTickets({ roundId, address }: MyTicketsProps) {
                 <div>
                   <p className="text-sm font-medium text-gray-700 mb-2">Winning Numbers</p>
                   <div className="flex gap-2 flex-wrap">
-                    {(winningNumbers as any[]).map((num: number, i: number) => {
-                      const isMatched = i < matchedBalls;
+                    {[...(winningNumbers as any[])]
+                      .sort((a, b) => a - b)
+                      .map((num: number, i: number) => {
+                        const matchedUserNumbers = numbers.slice(0, matchedBalls);
+                        const isMatched = matchedUserNumbers.includes(num);
 
-                      return (
-                        <div
-                          key={i}
-                          className={`
+                        return (
+                          <div
+                            key={i}
+                            className={`
                             w-12 h-12 rounded-lg flex items-center justify-center
                             font-bold text-base border-2
-                            ${isMatched
-                              ? 'bg-blue-100 border-blue-400 text-blue-900'
-                              : 'bg-gray-100 border-gray-300 text-gray-700'
+                            ${
+                              isMatched
+                                ? 'bg-blue-100 border-blue-400 text-blue-900'
+                                : 'bg-gray-100 border-gray-300 text-gray-700'
                             }
                           `}
-                        >
-                          {num}
-                        </div>
-                      );
-                    })}
+                          >
+                            {num}
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               )}

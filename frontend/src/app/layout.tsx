@@ -1,5 +1,11 @@
 'use client';
 
+if (typeof BigInt.prototype.toJSON === 'undefined') {
+  BigInt.prototype.toJSON = function() {
+    return this.toString();
+  };
+}
+
 import '@rainbow-me/rainbowkit/styles.css';
 import './globals.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -19,6 +25,7 @@ export default function RootLayout({
       <head>
         <title>Sequential Lottery DApp</title>
         <meta name="description" content="Play the Sequential Lottery - Match numbers sequentially to win!" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       </head>
       <body>
         <WagmiProvider config={config}>
